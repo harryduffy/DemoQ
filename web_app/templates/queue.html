@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Queue</title>
+</head>
+<body>
+    <h1 class="heading">Queue</h1>
+    <form action="#" method="POST" class="form-table">
+        {%for song in queue.get_queue()%}
+            {% if queue.get_queue().index(song) % 2 == 0 %}
+                <p id="queueOne" class="table-row"><label class="arrow">{%print(song.name + ": " + song.get_votes())%}</label><input class="arrow vote" type="submit" name="return" value="up-vote"/><input class="arrow vote" type="submit" name="return" value="down-vote"/></p>
+            {% endif %}
+            {% if queue.get_queue().index(song) % 2 == 1 %} 
+                <p id="queueTwo" class="table-row"><label class="arrow">{%print(song.name + ": " + song.get_votes())%}</label><input class="arrow vote" type="submit" name="return" value="up-vote"/><input class="arrow vote" type="submit" name="return" value="down-vote"/></p>
+            {% endif %}
+            
+        {%endfor%}
+    </form>
+    <br>
+    <br>
+    <form action="#" method="POST">
+
+        <div class="center">
+            <input class="input" name="song" type="text" placeholder="Add Song"/>
+            <br>
+            <br>
+            <input class="input-button" type="submit" name="return" value="Clear Queue">
+            <br>
+            <input class="input-button" type="submit" name="return" value="Submit"/>
+        </div>
+    </form>
+    
+</body>
+</html>
